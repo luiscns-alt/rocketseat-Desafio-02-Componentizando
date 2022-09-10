@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "../styles/sidebar.scss";
 import { Button } from "./Button";
 
@@ -13,7 +14,7 @@ interface ISideBarProps {
   selectedGenreId: number;
 }
 
-export function SideBar({
+function SideBarComponent({
   genres,
   handleClickButton,
   selectedGenreId,
@@ -39,3 +40,5 @@ export function SideBar({
     </nav>
   );
 }
+
+export const SideBar = memo(SideBarComponent)

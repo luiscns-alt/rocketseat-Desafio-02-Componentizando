@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "../styles/content.scss";
 import { MovieCard } from "./MovieCard";
 
@@ -22,7 +23,7 @@ interface ContentProps {
   movies: Array<IMovieProps>;
 }
 
-export function Content({ selectedGenre, movies }: ContentProps) {
+function ContentComponent({ selectedGenre, movies }: ContentProps) {
   return (
     <div className="container">
       <header>
@@ -47,3 +48,7 @@ export function Content({ selectedGenre, movies }: ContentProps) {
     </div>
   );
 }
+
+export const Content = memo(ContentComponent, (prevProps, nextProps) => {
+  return prevProps.selectedGenre === nextProps.selectedGenre;
+});
